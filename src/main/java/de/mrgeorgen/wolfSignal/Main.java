@@ -1,4 +1,4 @@
-package net.autoreconnect;
+package de.mrgeorgen.wolfSignal;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -19,14 +19,14 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static net.autoreconnect.ClientCommands.*;
-import static net.autoreconnect.Util.*;
+import static de.mrgeorgen.wolfSignal.ClientCommands.*;
+import static de.mrgeorgen.wolfSignal.Util.*;
 import static net.minecraft.command.arguments.NbtTagArgumentType.nbtTag;
 import static net.minecraft.util.Formatting.*;
 
-public class AutoReconnect implements ModInitializer
+public class Main implements ModInitializer
 {
-	public static final String MOD_ID = "autoreconnect";
+	public static final String MOD_ID = "wolfsignal";
 	public static int[] delayList = { 3, 10, 30, 60 };
 	public static int ticks = -1;
 	public static int attempt = -1;
@@ -36,8 +36,8 @@ public class AutoReconnect implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		ClientCommands.register(literal("reload").executes(AutoReconnect::cmdReload));
-		ClientCommands.register(literal("config").then(argument("delayList", nbtTag()).executes(AutoReconnect::cmdConfig)));
+		ClientCommands.register(literal("reload").executes(Main::cmdReload));
+		ClientCommands.register(literal("config").then(argument("delayList", nbtTag()).executes(Main::cmdConfig)));
 		loadConfig();
 	}
 
@@ -104,7 +104,7 @@ public class AutoReconnect implements ModInitializer
 		// if null or empty or contains negatives or zeros
 		if (delayList == null || delayList.length == 0 || IntStream.of(delayList).anyMatch(i -> i <= 0))
 			throw new IllegalArgumentException("delayList must be a non-empty list of strictly positive integers");
-		AutoReconnect.delayList = delayList;
+		Main.delayList = delayList;
 	}
 
 	public static void resetAttempts()

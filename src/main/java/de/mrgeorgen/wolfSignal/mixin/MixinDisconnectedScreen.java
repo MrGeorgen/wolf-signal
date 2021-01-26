@@ -1,4 +1,4 @@
-package net.autoreconnect.mixin;
+package de.mrgeorgen.wolfSignal.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.autoreconnect.AutoReconnect.*;
+import static de.mrgeorgen.wolfSignal.Main.*;
 
 @Mixin(DisconnectedScreen.class)
 public class MixinDisconnectedScreen

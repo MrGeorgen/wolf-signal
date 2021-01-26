@@ -1,4 +1,4 @@
-package net.autoreconnect;
+package de.mrgeorgen.wolfSignal;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -8,7 +8,7 @@ import net.minecraft.client.network.ClientCommandSource;
 
 import java.util.*;
 
-import static net.autoreconnect.AutoReconnect.MOD_ID;
+import static de.mrgeorgen.wolfSignal.Main.MOD_ID;
 
 public final class ClientCommands
 {

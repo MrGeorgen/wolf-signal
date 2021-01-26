@@ -1,6 +1,6 @@
-package net.autoreconnect.mixin;
+package de.mrgeorgen.wolfSignal.mixin;
 
-import net.autoreconnect.ClientCommands;
+import de.mrgeorgen.wolfSignal.ClientCommands;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static net.autoreconnect.Util.err;
-import static net.autoreconnect.Util.send;
+import static de.mrgeorgen.wolfSignal.Util.err;
+import static de.mrgeorgen.wolfSignal.Util.send;
 
 @Mixin(ClientPlayerEntity.class)
 public abstract class MixinClientPlayerEntity

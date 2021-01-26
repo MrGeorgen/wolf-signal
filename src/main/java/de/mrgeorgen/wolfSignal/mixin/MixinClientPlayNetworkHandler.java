@@ -1,8 +1,8 @@
-package net.autoreconnect.mixin;
+package de.mrgeorgen.wolfSignal.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import net.autoreconnect.ClientCommands;
+import de.mrgeorgen.wolfSignal.ClientCommands;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientCommandSource;

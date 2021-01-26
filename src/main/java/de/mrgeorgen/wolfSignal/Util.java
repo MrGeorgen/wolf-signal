@@ -1,4 +1,4 @@
-package net.autoreconnect;
+package de.mrgeorgen.wolfSignal;
 
 import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
