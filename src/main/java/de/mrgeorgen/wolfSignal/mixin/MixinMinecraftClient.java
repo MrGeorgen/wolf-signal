@@ -35,45 +35,13 @@ public class MixinMinecraftClient
 		// if not paused, decrements countdown until its negative, succeeds if its 0
 		if (ticks >= 0 && --ticks == 0)
 		{
-			if (lastServerEntry == null)
-			{
-				resetAttempts();
-			}
-			else
+			if (lastServerEntry != null)
 			{
 				MinecraftClient mc = MinecraftClient.getInstance();
 				mc.openScreen(new ConnectScreen(new MultiplayerScreen(new TitleScreen()), mc, lastServerEntry));
-			}
-		}
-	}
-
-	@Inject(at = @At("INVOKE"), method = "openScreen")
-	private void openScreen(Screen newScreen, CallbackInfo info)
-	{
-		// old and new screen must not be the same type, actually happens very often for some reason
-		if ((currentScreen == null ? null : currentScreen.getClass()) != (newScreen == null ? null : newScreen.getClass()))
-		{
-			if (currentScreen instanceof DisconnectedScreen && ( // exited disconnect screen using...
-					newScreen instanceof MultiplayerScreen || // ...cancel button on disconnect screen
-					newScreen instanceof TitleScreen || // ...escape key
-					newScreen != null && newScreen.getClass().getSimpleName().equals("AuthScreen")) || // ...AuthMe re-authenticate button
-				(currentScreen instanceof ConnectScreen && !(newScreen instanceof DisconnectedScreen))) // connection successful or cancelled using cancel button on connect screen
-			{
-				resetAttempts();
-			}
-			// player got disconnected
-			else if (newScreen instanceof DisconnectedScreen)
-			{
-				// if last known server is not null and next attempt is configured
-				if (lastServerEntry != null && ++attempt < delayList.length)
-				{
-					ticks = delayList[attempt] * 20;
+				if(disconnectedCausedByWolfSignal = signalIndex >= 0) {
+					disconnectTicks = 2 * 20;
 				}
-				else
-				{
-					resetAttempts();
-				}
-				log("lastServerEntry: %s, attempt: %d", lastServerEntry == null ? "null" : lastServerEntry.name, attempt);
 			}
 		}
 	}

@@ -26,11 +26,11 @@ public class Util
 			Logger logger = LogManager.getLogger("AutoReconnect");
 			if (Objects.equals(text.getStyle().getColor(), TextColor.fromFormatting(RED)))
 			{
-				logger.error("[AutoReconnect] " + text.getString());
+				logger.error("[wolfSignal] " + text.getString());
 			}
 			else
 			{
-				logger.info("[AutoReconnect] " + text.getString());
+				logger.info("[wolfSignal] " + text.getString());
 			}
 		}
 		else player.sendMessage(text, false);
