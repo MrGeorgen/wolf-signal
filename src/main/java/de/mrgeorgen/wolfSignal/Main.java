@@ -29,6 +29,7 @@ public class Main implements ModInitializer {
 
 	private static int cmdSignal(CommandContext<ClientCommandSource> ctx) {
 		signal = ctx.getArgument("signal", int.class);
+		disconnectedCausedByWolfSignal = true;
 		MinecraftClient.getInstance().world.disconnect();
 		signalIndex = 4;
 		setTick();

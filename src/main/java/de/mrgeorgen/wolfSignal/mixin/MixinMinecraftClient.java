@@ -56,6 +56,7 @@ public class MixinMinecraftClient
 					(currentScreen instanceof ConnectScreen && !(newScreen instanceof DisconnectedScreen))) // connection successful or cancelled using cancel button on connect screen
 			{
 				ticks = -1;
+				disconnectedCausedByWolfSignal = false;
 			}
 		}
 	}
