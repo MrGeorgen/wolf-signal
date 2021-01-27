@@ -1,21 +1,4 @@
-# AutoReconnect [1.16+][Fabric]
-
-This mod will automatically try to reconnect you back to a server if you got disconnected.
-By default, it will make 4 attempts after 3, 10, 30 and 60 seconds.
-
-### Features
-
-* Multiple individually delayed reconnect attempts
-* Displays a countdown on the disconnect screen
-* Allows you to exit the disconnect screen quickly by pressing the escape key
-* Customizable
-    * Amount of attempts
-    * Delay between each attempt
-* Client side commands
-    * `/autoreconnect reload` Reloads the config and displays the settings in chat
-    * `/autoreconnect config [<delayList>]` Sets the delay between each attempt<br>
-    `[<delayList>]` must be a Nbt List Tag containing Integers, e.g. `[3, 10, 30, 60]` or `[I;3, 10, 30, 60]`
-* Support for several mods
+# WolfSignal [1.16+][Fabric]
 
 ### Installation
 
@@ -30,12 +13,6 @@ By default, it will make 4 attempts after 3, 10, 30 and 60 seconds.
   and provides a link for the curseforge project page and the github issues page
 * [AuthMe](https://www.curseforge.com/minecraft/mc-mods/auth-me) <br>
   Cancels the countdown if you click on the Re-authenticate button to revalidate the session of the game
-
-### Screenshots
-
-![countdown](src/main/resources/assets/countdown.png)
-
-![failed](src/main/resources/assets/failed.png)
 
 ### License
 
