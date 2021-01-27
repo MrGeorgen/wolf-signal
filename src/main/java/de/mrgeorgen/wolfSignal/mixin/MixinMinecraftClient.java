@@ -45,4 +45,18 @@ public class MixinMinecraftClient
 			}
 		}
 	}
+	@Inject(at = @At("INVOKE"), method = "openScreen")
+	private void openScreen(Screen newScreen, CallbackInfo info) {
+		// old and new screen must not be the same type, actually happens very often for some reason
+		if ((currentScreen == null ? null : currentScreen.getClass()) != (newScreen == null ? null : newScreen.getClass())) {
+			if (currentScreen instanceof DisconnectedScreen && ( // exited disconnect screen using...
+					newScreen instanceof MultiplayerScreen || // ...cancel button on disconnect screen
+							newScreen instanceof TitleScreen || // ...escape key
+							newScreen != null && newScreen.getClass().getSimpleName().equals("AuthScreen")) || // ...AuthMe re-authenticate button
+					(currentScreen instanceof ConnectScreen && !(newScreen instanceof DisconnectedScreen))) // connection successful or cancelled using cancel button on connect screen
+			{
+				ticks = -1;
+			}
+		}
+	}
 }

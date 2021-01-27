@@ -5,6 +5,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.DisconnectedScreen;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,12 +32,13 @@ public class MixinDisconnectedScreen
 	@Inject(at = @At("RETURN"), method = "render")
 	private void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo info)
 	{
+	    if(!disconnectedCausedByWolfSignal) return;
 		Window window = MinecraftClient.getInstance().getWindow();
 		TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
-		String text = getMessage();
+		String text = "sending signal " + signal + "using wolfs";
 		renderer.draw(matrices, text,
 			(window.getScaledWidth() - renderer.getWidth(text)) / 2F, // centered
 			(window.getScaledHeight() - reasonHeight) / 2F - 9 * 4, // 9 * 2 higher than the title which is 9 * 2 higher than the disconnect reason
-			getColor());
+				Formatting.WHITE.getColorValue());
 	}
 }
