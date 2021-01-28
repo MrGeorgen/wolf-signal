@@ -35,10 +35,10 @@ public class MixinDisconnectedScreen
 	    if(!disconnectedCausedByWolfSignal) return;
 		Window window = MinecraftClient.getInstance().getWindow();
 		TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
-		String text = "sending signal " + signal + "using wolfs";
+		String text = "sending signal " + signal + " using wolfs";
 		renderer.draw(matrices, text,
 			(window.getScaledWidth() - renderer.getWidth(text)) / 2F, // centered
 			(window.getScaledHeight() - reasonHeight) / 2F - 9 * 4, // 9 * 2 higher than the title which is 9 * 2 higher than the disconnect reason
-				Formatting.WHITE.getColorValue());
+				Formatting.GREEN.getColorValue());
 	}
 }
