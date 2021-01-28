@@ -38,6 +38,7 @@ public class Main implements ModInitializer {
 
 	private static void disconnectTimeout() {
 		if(disconnectTicks >= 0 && --disconnectTicks == 0) {
+			disconnectedCausedByWolfSignal = true;
 			MinecraftClient.getInstance().world.disconnect();
 			setTick();
 		}
